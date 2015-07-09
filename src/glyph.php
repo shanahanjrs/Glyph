@@ -19,16 +19,21 @@ print("Glyph version $version\n");
 /**
  * Configuration
  */
-require __DIR__ . '/../lib/Application.php';
-
-$inputFile;
-$outputFile;
+require_once __DIR__ . '/../lib/Application.php';
+$glyph = new Application;
 
 if ( empty($argv[1])) {
     print("Error[01]: No file specified\n");
 } else {
     $inputFile = $argv[1];
-    print("File input: $inputFile\n");
+    print("File: $inputFile\n");
+    $ext = $glyph->getFileExtension($inputFile);
+    if ( $ext ) {
+        if ( $ext != 'glyph' ) { print("Error[02]: File extension not .glyph\n"); return -1; }
+    } else {
+        //$glyph->error();
+        print("Error[03]: Cannot find filetype\n");
+    }
 }
 
 
