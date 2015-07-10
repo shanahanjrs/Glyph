@@ -23,4 +23,4 @@
 * IN THE SOFTWARE.
 */
 
-$app = require __DIR__ . '/../src/glyph.php';
+require __DIR__ . '/../src/glyph.php';
